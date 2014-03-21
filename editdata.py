@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import urllib2
 import urllib
 from bs4 import BeautifulSoup
@@ -13,12 +14,12 @@ import collections
 
 # fullDataPath = rootPath + 'data.json'
 
-infoUrl = 'https://en.wikipedia.org/w/index.php?'
+infoUrl = 'https://ml.wikipedia.org/w/index.php?'
 infoData = {'title':'','action':'info'}
 infoHeaders = { 'User-Agent' : 'Womens edit a thon India' }
 
-cmtitle = "Category:Articles_created_or_expanded_during_Women's_History_Month_(India)_-_2014"
-apiUrl = 'https://en.wikipedia.org/w/api.php'
+cmtitle = "വർഗ്ഗം:2014 വനിതാദിന തിരുത്തൽ യജ്ഞത്തിന്റെ ഭാഗമായി സൃഷ്ടിക്കപ്പെട്ട താളുകൾ"
+apiUrl = 'https://ml.wikipedia.org/w/api.php'
 categoryData = {
                   'action' : 'query',
                   'list' : 'categorymembers',
@@ -65,7 +66,7 @@ print "------Articles wise Edit Count-------"
 for article in articleList:
 	articleTitle = article['title'].replace(' ','_')
 	articleId = article['pageid']
-	r = requests.get('http://en.wikipedia.org/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccomment&rvlimit=500&rvstart=20140301000000&rvdir=newer&titles='+articleTitle)
+	r = requests.get('http://ml.wikipedia.org/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccomment&rvlimit=500&rvstart=20140301000000&rvdir=newer&titles='+articleTitle)
 
 	a = r.json()
 	# print a['query']['pages'][str(articleId)]['revisions']
