@@ -38,6 +38,7 @@ def getArticleList(cmtitle):
         response = json.loads(urllib2.urlopen(req).read())
         
         for article in response['query']['categorymembers']:
+            article['title'] = article['title'].split(':')[-1]
             articleList.append(article)
         if 'query-continue' not in response:
             break;
@@ -64,17 +65,17 @@ articleList = getArticleList(cmtitle)
 print "------Articles wise Edit Count-------"
 
 for article in articleList:
-	articleTitle = article['title'].replace(' ','_')
-	articleId = article['pageid']
+        articleTitle = article['title'].replace(' ','_')
 	r = requests.get('http://ml.wikipedia.org/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccomment&rvlimit=500&rvstart=20140301000000&rvdir=newer&titles='+articleTitle)
 
 	a = r.json()
+        articleId = a['query']['pages'].keys()[0]
 	# print a['query']['pages'][str(articleId)]['revisions']
 	# print articleId
 	# print a['query'][]
 	final = a['query']['pages'][str(articleId)]['revisions']
 
-	print article['title'] + '\t\t' + str(len(final))
+        print article['title'] + '\t\t' + str(len(final))
 	articles[article['title']] = len(final)
 	for item in final:
 		if item.has_key('anon'):
