@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import urllib2
 import urllib
 import json
@@ -13,8 +14,8 @@ fullDataPath = rootPath + 'data.json'
 
 headers = { 'User-Agent' : 'Womens edit a thon India' }
 
-cmtitle = "Category:Articles_created_or_expanded_during_Women's_History_Month_(India)_-_2014"
-apiUrl = 'https://en.wikipedia.org/w/api.php'
+cmtitle = "വർഗ്ഗം:2014 വനിതാദിന തിരുത്തൽ യജ്ഞത്തിന്റെ ഭാഗമായി സൃഷ്ടിക്കപ്പെട്ട താളുകൾ"
+apiUrl = 'https://ml.wikipedia.org/w/api.php'
 
 eventStartTimestamp = 20140301000000
 
