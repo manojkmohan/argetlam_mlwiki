@@ -12,7 +12,7 @@ $(function(){
 			for (key in json.user){
 				val = json.user[key];
 				name = key.replace(/\ /g,'_');
-				var href = "https://en.wikipedia.org/wiki/User:" + name;
+				var href = "https://ml.wikipedia.org/wiki/User:" + name;
 				userData = "<tr><td> " + count + " </td> <td><a target = '_blank' href="+ href +">" + key+ "</a></td> <td>" + val + "</td> </tr>";
 				$('#userData').append(userData);
 				count = count + 1;
@@ -23,7 +23,7 @@ $(function(){
 			for (key in json){
 				val = json[key];
 				name = key.replace(/\ /g,'_');
-				var href = "https://en.wikipedia.org/wiki/" + name;
+				var href = "https://ml.wikipedia.org/wiki/" + name;
 				articleData = "<tr><td> " + countTotal + " </td> <td><a target = '_blank' href="+ href +">" + key+ "</a></td> <td>" + val + "</td> </tr>";
 				$('#articleData').append(articleData);
 				countTotal = countTotal + 1;
